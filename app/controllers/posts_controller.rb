@@ -9,8 +9,11 @@ class PostsController < ApplicationController
 
   def update
     @post.update(post_params)
-
-    redirect_to post_path(@post)
+    if @post
+      redirect_to post_path(@post)
+    else
+      redirect_to edit_post_path(@post.id)
+    end
   end
 
   private
